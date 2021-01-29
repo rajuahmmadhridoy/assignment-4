@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label id="first-total" for="">First Class ($150)</label>
+                    <input id="first-input" class="inp-style inp-width" type="number" name="" value="1">
+                </div>
+                <div class="plus-minus-btn">
+                    <p> <button id="first-increase">+</button> <button id="first-decrease">-</button></p>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label id="economy-total" for="">Economy ($100)</label>
+                    <input id="economy-input" class="inp-style inp-width" type="number" name="" value="1">
+                </div>
+                <div class="plus-minus-btn">
+                    <p> <button id="economy-increase">+</button> <button id="economy-decrease">-</button> </p>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subtotal">$500</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p >Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat-count">$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="Total">$550</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+    </section>
+
+
+
+<script>
+    document.getElementById('first-increase').addEventListener('click', function(){
+  
+        allbooking('first',true)
+    })
+    document.getElementById('first-decrease').addEventListener('click', function(){
+      
+        allbooking('first', false)
+    })
+    document.getElementById('economy-increase').addEventListener('click', function(){
+       
+        allbooking('economy',true)
+    })
+    document.getElementById('economy-decrease').addEventListener('click', function(){
+     
+        allbooking('economy', false)
+    })
+
+   
+
+    
+    function allbooking(booksit, isincrease){
+        const firstInput = document.getElementById(booksit + '-input');
+        const firstCount = parseFloat(firstInput.value);
+        let firstNewCount = firstCount;
+        if(isincrease == true){
+            firstNewCount = firstCount + 1;
+        }
+        if(isincrease == false && firstCount > 0){
+            firstNewCount = firstCount - 1;
+        }
+        firstInput.value = firstNewCount;
+        const firstTotal = firstNewCount * 150;
+        document.getElementById(booksit + '-total').innerText = booksit + ' Class ($' + firstTotal + ')';
+        Total_price()
+    }
+
+
+    function Total_price(){
+        const firstCount = booksitInput('first');
+        const economyCount = booksitInput('economy');
+        const subTotalPrice = firstCount * 150 + economyCount * 100;
+        document.getElementById('subtotal').innerText = '$' + subTotalPrice;
+        const vatCount = subTotalPrice * .10;
+        document.getElementById('vat-count').innerText = '$' + vatCount;
+        const Total = subTotalPrice - vatCount;
+        document.getElementById('Total').innerText = '$' + Total;
+    }
+     function booksitInput(sitInput){
+         const SitInput = document.getElementById(sitInput + '-input');
+         const SitCount = parseFloat(SitInput.value);
+         return SitCount;
+     }
+
+</script>
+
+
+
+
+
+
+
+
+    <!--Thank You-->
+</body>
+
+</html>
