@@ -51,20 +51,20 @@
             <div class="input-group f-class">
                 <div>
                     <label id="first-total" for="">First Class ($150)</label>
-                    <input id="first-input" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="first-input" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <button id="first-increase">+</button> <button id="first-decrease">-</button></p>
+                    <p> <button onclick="allbooking('first',true)">+</button> <button onclick="allbooking('first', false)">-</button></p>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label id="economy-total" for="">Economy ($100)</label>
-                    <input id="economy-input" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="economy-input" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <button id="economy-increase">+</button> <button id="economy-decrease">-</button> </p>
+                    <p> <button onclick="allbooking('economy',true)">+</button> <button onclick=" allbooking('economy', false)">-</button> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -73,7 +73,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p id="subtotal">$500</p>
+                        <p id="subtotal">$00</p>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@
                         <p >Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p id="vat-count">$50</p>
+                        <p id="vat-count">$00</p>
                     </div>
                 </div>
                 <hr>
@@ -91,11 +91,11 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p id="Total">$550</p>
+                        <p id="Total">$00</p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="submit()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -107,25 +107,13 @@
 
 
 <script>
-    document.getElementById('first-increase').addEventListener('click', function(){
-  
-        allbooking('first',true)
-    })
-    document.getElementById('first-decrease').addEventListener('click', function(){
-      
-        allbooking('first', false)
-    })
-    document.getElementById('economy-increase').addEventListener('click', function(){
-       
-        allbooking('economy',true)
-    })
-    document.getElementById('economy-decrease').addEventListener('click', function(){
-     
-        allbooking('economy', false)
-    })
-
+ 
    
+   /* **************************************************************
+    
+       This function use for value inscrease and decrease 
 
+      ************************************************************** */
     
     function allbooking(booksit, isincrease){
         const firstInput = document.getElementById(booksit + '-input');
@@ -139,10 +127,14 @@
         }
         firstInput.value = firstNewCount;
         const firstTotal = firstNewCount * 150;
-        document.getElementById(booksit + '-total').innerText = booksit + ' Class ($' + firstTotal + ')';
         Total_price()
     }
 
+    /* **************************************************************
+
+       This function use for calculate  subtotal vat and total amonut
+
+      ************************************************************** */
 
     function Total_price(){
         const firstCount = booksitInput('first');
@@ -154,11 +146,44 @@
         const Total = subTotalPrice - vatCount;
         document.getElementById('Total').innerText = '$' + Total;
     }
+
+       /* **************************************************************
+    
+       This function use for get input from input fild
+
+      ************************************************************** */
      function booksitInput(sitInput){
          const SitInput = document.getElementById(sitInput + '-input');
          const SitCount = parseFloat(SitInput.value);
          return SitCount;
      }
+
+
+        /* **************************************************************
+    
+       This function use for create submit alert and to do blank 0 in input fild
+       and others
+
+      ************************************************************** */
+
+    function submit() {
+        if(document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0){
+            alert("please at list book single sit");
+        }
+        else{
+            alert("congratulations your sit is resurved");
+        }
+
+        document.getElementById('first-input').value = 0 ;
+        document.getElementById('economy-input').value = 0 ;
+
+        document.getElementById('subtotal').innerText = "$00";
+        document.getElementById('vat-count').innerText = "$00";
+        document.getElementById('Total').innerText = "$00";
+    
+    }
+
+ 
 
 </script>
 
