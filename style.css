@@ -65,14 +65,31 @@ nav ul li a:hover, a.active{
 .inp-width{
     min-width: 300px;
 }
+.plus-minus-btn {
+    width: 100px;
+    margin-top: 6px;
+}
 .plus-minus-btn button {
-    color: #3352F2;
+    color: #fff;
     font-size: 30px;
-    padding: 0 15px;
+    padding: 0 12px;
     margin-top: 10px;
     word-spacing: 20px;
     background: none;
     border: none;
+    outline: 0;
+    cursor: pointer;
+}
+.plus-minus-btn button:first-child {
+    background: tomato;
+    border-radius: 5px;
+    margin-left: 5px;
+   
+}
+.plus-minus-btn button:last-child {
+    background: #26db8a;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 .booking-form  .calculations{
     margin: 10px 0;
@@ -108,7 +125,7 @@ nav ul li a:hover, a.active{
     margin-bottom: 25px;
 }
 
-.btn-style{
+.btn-style {
     display: block;
     width: 100%;
     padding: 10px;
@@ -116,9 +133,65 @@ nav ul li a:hover, a.active{
     border: none;
     color: #fff;
     font-weight: 500;
-    background-color:  #3352F2;
+    background-color: #3352F2;
+    cursor: pointer;
+    outline: 0;
 }
 .amount{
     display: flex;
     justify-content: space-between;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* popup */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    text-align: center;
+}
+#popup__title {
+    color: #f05f2a;
+    margin-bottom: 5px;
+}
+#popup__info {
+    color: gray;
+    font-size: 15px;
+}
+#open-popup{
+  font-size: 30px;
+}
+
+#close-popup {
+    background: #f05f2a;
+    border: none;
+    display: block;
+    width: 240px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 25px;
+    outline: 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
 }

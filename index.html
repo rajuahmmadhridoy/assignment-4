@@ -95,7 +95,17 @@
                     </div>
                 </div>
             </div>
+            <!-- popup start -->
+            
+
+            <div id="popup">
+              <h2 id="popup__title">Checkout Successful</h2>
+              <p id="popup__info">Booking successful</p>
+              <button id="close-popup">Close</button>
+            </div>
+            <!-- popup end -->
             <button onclick="submit()" class="btn-style">Book Now</button>
+            
         </div>
 
         <div class="booking-content">
@@ -166,12 +176,51 @@
 
       ************************************************************** */
 
+    // function submit() {
+    //     if(document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0){
+    //         alert("please at list book a single sit");
+    //     }
+    //     else{
+    //         alert("congratulations your sit is resurved");
+    //     }
+
+    //     document.getElementById('first-input').value = 0 ;
+    //     document.getElementById('economy-input').value = 0 ;
+
+    //     document.getElementById('subtotal').innerText = "$00";
+    //     document.getElementById('vat-count').innerText = "$00";
+    //     document.getElementById('Total').innerText = "$00";
+    // 
+    // }
+
     function submit() {
         if(document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0){
-            alert("please at list book a single sit");
+            const popup = document.getElementById('popup');
+            popup.style.opacity = '1';
+            popup.style.visibility = 'visible';
+            const popup__title = document.getElementById('popup__title');
+            popup__title.innerText = 'Booking Unsuccessful!';
+            const popup__info = document.getElementById('popup__info');
+            popup__info.innerText = 'You need to buy at least one ticket.';
+            const close_popup = document.getElementById('close-popup').addEventListener('click', function(){
+                popup.style.opacity = '0';
+                popup.style.visibility = 'hidden';
+            })
+
         }
         else{
-            alert("congratulations your sit is resurved");
+            const popup = document.getElementById('popup');
+            popup.style.opacity = '1';
+            popup.style.visibility = 'visible';
+            popup__title.innerText = 'Booking successful';
+            popup__title.style.color = 'blue'
+            const popup__info = document.getElementById('popup__info');
+            popup__info.innerText = 'You need to buy at least one ticket.';
+            const close_popup = document.getElementById('close-popup').addEventListener('click', function(){
+                popup.style.opacity = '0';
+                popup.style.visibility = 'hidden';
+            })
+
         }
 
         document.getElementById('first-input').value = 0 ;
