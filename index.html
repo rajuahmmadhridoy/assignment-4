@@ -176,61 +176,43 @@
 
       ************************************************************** */
 
-    // function submit() {
-    //     if(document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0){
-    //         alert("please at list book a single sit");
-    //     }
-    //     else{
-    //         alert("congratulations your sit is resurved");
-    //     }
-
-    //     document.getElementById('first-input').value = 0 ;
-    //     document.getElementById('economy-input').value = 0 ;
-
-    //     document.getElementById('subtotal').innerText = "$00";
-    //     document.getElementById('vat-count').innerText = "$00";
-    //     document.getElementById('Total').innerText = "$00";
-    // 
-    // }
+  
 
     function submit() {
-        if(document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0){
-            const popup = document.getElementById('popup');
-            popup.style.opacity = '1';
-            popup.style.visibility = 'visible';
-            const popup__title = document.getElementById('popup__title');
-            popup__title.innerText = 'Booking Unsuccessful!';
-            const popup__info = document.getElementById('popup__info');
-            popup__info.innerText = 'You need to buy at least one ticket.';
-            const close_popup = document.getElementById('close-popup').addEventListener('click', function(){
+                const popup = document.getElementById('popup');
+                const popup__title = document.getElementById('popup__title');
+                const popup__info = document.getElementById('popup__info');
+                let firstTotal = booksitInput('first')
+                let economicsTotal = booksitInput('economy')
+                let Total = economicsTotal + firstTotal ;
+                if (document.getElementById('first-input').value == 0 && document.getElementById('economy-input').value == 0) {
+                    popup__title.innerText = 'Booking Unsuccessful!';
+                    popup__title.style.color = 'red';
+                    popup__info.innerText = 'You need to buy at least one ticket.';
+                } else {
+                    popup__title.innerText = 'Booking successful';
+                    popup__title.style.color = '#04B404';
+                    let userfirstTotal = firstTotal * 150 ;
+                    let usereconomicsTotal = economicsTotal * 100;
+                    popup__info.innerText = 'You booked Total ' + Total + ' sit ' + ' first total sit ' + firstTotal   + ' first total amount  ' + userfirstTotal   + ' economics total sit ' + economicsTotal  + ' economics total amount ' + usereconomicsTotal + ' .';
+                    
+                }
+
+                popup.style.opacity = '1';
+                popup.style.visibility = 'visible';
+
+                document.getElementById('first-input').value = 0;
+                document.getElementById('economy-input').value = 0;
+
+                document.getElementById('subtotal').innerText = "$00";
+                document.getElementById('vat-count').innerText = "$00";
+                document.getElementById('Total').innerText = "$00";
+            }
+
+            document.getElementById('close-popup').addEventListener('click', function () {
                 popup.style.opacity = '0';
                 popup.style.visibility = 'hidden';
             })
-
-        }
-        else{
-            const popup = document.getElementById('popup');
-            popup.style.opacity = '1';
-            popup.style.visibility = 'visible';
-            popup__title.innerText = 'Booking successful';
-            popup__title.style.color = 'blue'
-            const popup__info = document.getElementById('popup__info');
-            popup__info.innerText = 'You need to buy at least one ticket.';
-            const close_popup = document.getElementById('close-popup').addEventListener('click', function(){
-                popup.style.opacity = '0';
-                popup.style.visibility = 'hidden';
-            })
-
-        }
-
-        document.getElementById('first-input').value = 0 ;
-        document.getElementById('economy-input').value = 0 ;
-
-        document.getElementById('subtotal').innerText = "$00";
-        document.getElementById('vat-count').innerText = "$00";
-        document.getElementById('Total').innerText = "$00";
-    
-    }
 
  
 

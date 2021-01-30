@@ -169,6 +169,7 @@ input[type=number] {
     opacity: 0;
     transition: .5s;
     text-align: center;
+    width: 480px;
 }
 #popup__title {
     color: #f05f2a;
@@ -177,6 +178,8 @@ input[type=number] {
 #popup__info {
     color: gray;
     font-size: 15px;
+    margin-top: 10px;
+    line-height: 20px;
 }
 #open-popup{
   font-size: 30px;
